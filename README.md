@@ -1,1 +1,1 @@
-[View Demo](https://operatorjen.github.io/mcsv)
+[View Demo](https://operatorjen.github.io/mscv/)
