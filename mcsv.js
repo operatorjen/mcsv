@@ -1,24 +1,17 @@
 (() => {
-  const cv=sc,
-        W=innerWidth, H=innerHeight;
+  const cv=sc,W=innerWidth, H=innerHeight;
   cv.width=W; cv.height=H;
   const x=cv.getContext('2d');
   const RA=Math.random;
   x.globalCompositeOperation='saturation';
-
   const S={
     e:{happy:{r:.2,d:-.1},sad:{r:-.1,d:.2},depressed:{r:-.2,d:.3},anxious:{r:-.2,d:.3},excited:{r:.3,d:.2},nervous:{r:-.2,d:.2},frustrated:{r:-.2,d:.2},content:{r:.1,d:-.2}},
     b:{buying:{r:.1,d:-.1},saving:{r:.2,d:-.1},researching:{r:.1,d:0},avoiding:{r:-.1,d:.1},sharing:{r:.2,d:-.1},meditating:{r:.3,d:-.2}}
   };
-
   const g=(r,d)=>{let m=1e9,s; for(const C of [S.e,S.b]) for(const k in C){const v=C[k],D=Math.abs(v.r-r)+Math.abs(v.d-d); if(D<m){m=D; s=k;}} return s;};
-
   class C {
     constructor(x,y,r=RA(),d=RA(),e=0.1){
-      this.x=x; this.y=y; this.r=r; this.d=d; this.e=e;
-      this.a=[]; this.h=[]; this.s=g(r,d);
-      this.v={x:(RA()-.5)*4,y:(RA()-.5)*4};
-      this.R=['instigator','observer','receiver'][~~(3*RA())];
+      this.x=x; this.y=y; this.r=r; this.d=d; this.e=e;this.a=[]; this.h=[]; this.s=g(r,d);this.v={x:(RA()-.5)*4,y:(RA()-.5)*4};this.R=['instigator','observer','receiver'][~~(3*RA())];
       this.o=[]; this.t=0;
     }
     uR(){
@@ -50,8 +43,7 @@
         if(p>m){m=p; sel=t;}
       }
       const e=S.e[sel]||S.b[sel];
-      if(e){ this.r=Math.min(1,Math.max(0,this.r+e.r*.1));
-              this.d=Math.min(1,Math.max(0,this.d+e.d*.1)); }
+      if(e){ this.r=Math.min(1,Math.max(0,this.r+e.r*.1));this.d=Math.min(1,Math.max(0,this.d+e.d*.1)); }
       this.uS();
       return {from:this.s,to:sel,currentState:this.gC(),history:this.h};
     }
@@ -67,8 +59,7 @@
     i(o){
       const dx=this.x-o.x, dy=this.y-o.y, d=Math.hypot(dx,dy);
       if(d<150){
-        const rs=1-Math.abs(this.r-o.r), ds=1-Math.abs(this.d-o.d),
-              F=.01*(rs+ds)/(d*d);
+        const rs=1-Math.abs(this.r-o.r), ds=1-Math.abs(this.d-o.d),F=.01*(rs+ds)/(d*d);
         this.v.x-=F*dx; this.v.y-=F*dy; o.v.x+=F*dx; o.v.y+=F*dy;
         if(d<50) this.rI(o);
       }
@@ -98,9 +89,7 @@
   for(let i=0;i<n;i++){
     const u=new C(RA()*W,RA()*H);
     for(let j=0;j<30;j++){
-      const f=all[~~(RA()*all.length)],
-            t=all[~~(RA()*all.length)],
-            k=RA();
+      const f=all[~~(RA()*all.length)],t=all[~~(RA()*all.length)],k=RA();
       u.aA(f,t,k);
     }
     M.push(u);
@@ -135,10 +124,7 @@
 
   function U(){
     x.clearRect(0,0,W,H);
-    M.forEach(a=>{
-      a.pNS(); a.m(W,H); D(a);
-      M.forEach(b=>a!==b&&a.i(b));
-    });
+    M.forEach(a=>{ a.pNS(); a.m(W,H); D(a);M.forEach(b=>a!==b&&a.i(b)); });
     M.forEach(a=>{
       if(a.t===0){
         x.beginPath();
@@ -147,6 +133,5 @@
       }
     });
   }
-
   (function A(){ U(); requestAnimationFrame(A); })();
 })();
