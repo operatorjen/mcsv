@@ -19,6 +19,7 @@ canvas {
 
 #world {
   background: linear-gradient(45deg, rgba(234, 228, 46, 0.677), rgba(1, 1, 1, 0));
+  box-shadow: rgba(15, 238, 126, 0.4) 2px 2px 2px;
 }
 
 #motifs span {
@@ -27,4 +28,7 @@ canvas {
 
 #knobs li {
   background-color: rgb(13, 149, 74);
+  background: radial-gradient(circle at 80% 0%, rgba(205, 24, 60, 0.7) 10%, rgba(214, 255, 32, 0.6) 100%);
+  box-shadow: rgba(218, 18, 105, 0.58) -13px -2px 2px;
+  color: #dffff8;
 }
