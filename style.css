@@ -32,3 +32,8 @@ canvas {
   box-shadow: rgba(218, 18, 105, 0.58) -13px -2px 2px;
   color: #dffff8;
 }
+
+#home:hover {
+  background-color: rgba(239, 231, 8, 0.8);
+  color: rgb(32, 175, 134);
+}
